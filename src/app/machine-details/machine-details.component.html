@@ -1,0 +1,16 @@
+<h2 class="mr-l-20">{{ machine?.machineType }}</h2>
+<div class="mr-r-20 mr-l-20">
+  Status: {{ machine?.status }}
+  <div>
+    Last Maintenance:
+    {{ machine?.lastMaintenance | date : "dd/MM/yyyy, HH:mm:ss" }}
+  </div>
+  <div>Last 10 status changes:</div>
+</div>
+<ul>
+  @for (event of machine?.events; track event) {
+  <li>
+    {{ event?.timestamp | date : "dd/MM/yyyy, HH:mm:ss" }}: {{ event?.status }}
+  </li>
+  }
+</ul>
